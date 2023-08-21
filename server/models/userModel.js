@@ -1,12 +1,11 @@
-const mongoose = require("mongoose");
+const { ObjectId } = require("mongodb");
 
-const userSchema = new mongoose.Schema({
-  username: { type: String, required: true },
-  email: { type: String, required: true },
-  passwordHash: { type: String, required: true },
-  country: { type: String, enum: ["Canada"], default: "Canada" },
-});
-
-const User = mongoose.model("User", userSchema);
-
+class User {
+  constructor(username, email, passwordHash, country = "Canada") {
+    this.username = username;
+    this.email = email;
+    this.passwordHash = passwordHash;
+    this.country = country;
+  }
+}
 module.exports = User;
