@@ -5,6 +5,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const morgan = require("morgan");
+const jwt = require("jsonwebtoken");
 const MongoClient = require("mongodb").MongoClient;
 require("dotenv").config();
 const { MONGO_URI } = process.env;
