@@ -36,16 +36,13 @@ router.post("/register", async (req, res) => {
 
     //Create New User
     const newUser = new User(username, email, passwordHash);
-    console.log("New user object:", newUser);
 
     //Save the user to the database
     await usersCollection.insertOne(newUser);
-    console.log("User Registered Successfully:", newUser.email);
     return res.status(201).json({
       message: "User registered succesfully!",
       user: { username: newUser.username, email: newUser.email },
     });
-    console.log("User registered Succesfully:", newUser);
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: "Internal server error" });
@@ -61,7 +58,6 @@ router.post("/login", async (req, res) => {
     const usersCollection = db.collection("Users");
     //Find the user by email
     const user = await usersCollection.findOne({ email });
-    console.log(user);
     if (user) {
       // Compare the password
       const passwordMatch = await bcrypt.compare(password, user.passwordHash);

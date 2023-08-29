@@ -7,7 +7,7 @@ const getEvents = async (location) => {
   try {
     const response = await axios.get(apiUrl, {
       params: {
-        size: 10,
+        size: 20,
         apikey: apiKey,
         city: location,
       },

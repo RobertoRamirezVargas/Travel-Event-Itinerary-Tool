@@ -5,11 +5,16 @@ const getWeather = async (cityName) => {
   const apiUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&country=CA&appid=${apiKey}`;
 
   try {
-    const response = await axios.get(apiUrl);
+    const response = await axios.get(apiUrl, {
+      params: {
+        apikey: apiKey,
+        q: `${cityName},CA`,
+      },
+    });
 
     if (response.data.list && response.data.list.length > 0) {
       const weatherData = response.data.list[0];
-      return weatherData;
+      return { ...weatherData, name: response.data.city.name };
     } else {
       throw new Error("Weather data not available.");
     }

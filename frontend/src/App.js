@@ -9,13 +9,14 @@ import Weather from "./components/Weather";
 import Events from "./components/Events";
 import GlobalStyle from "./globalStyle";
 import Profile from "./components/Profile";
+import Navbar from "./components/Navbar";
+
 const App = () => {
   const [user, setUser] = useState(null);
-  console.log("user state:", user);
-  console.log("setUser function:", setUser);
   return (
     <BrowserRouter>
       <GlobalStyle />
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
@@ -23,7 +24,10 @@ const App = () => {
           element={<Registration setUser={setUser} />}
         />
         <Route path="/login" element={<Login setUser={setUser} />} />
-        <Route path="/profile" element={<Profile user={user} />} />
+        <Route
+          path="/profile"
+          element={<Profile user={user} setUser={setUser} />}
+        />
         <Route path="/itinerary" element={<Itinerary />} />
         <Route path="/map" element={<Map />} />
         <Route path="/weather" element={<Weather />} />
