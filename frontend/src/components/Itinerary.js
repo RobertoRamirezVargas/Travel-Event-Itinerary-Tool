@@ -67,11 +67,23 @@ const Itinerary = () => {
 
   const saveItinerary = async () => {
     try {
-      await axios.post("/saveItinerary", {
-        selectedEvents,
-        selectedRestaurants,
-      });
+      const token = localStorage.getItem("token");
+      if (!token) {
+        return;
+      }
 
+      await axios.post(
+        "/saveItinerary",
+        {
+          selectedEvents: selectedEvents,
+          selectedRestaurants: selectedRestaurants,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       navigate("/profile");
     } catch (error) {
       console.error("Error saving itinerary", error);
@@ -137,6 +149,7 @@ const Itinerary = () => {
           onChange={(e) => setSelectedCity(e.target.value)}
         />
       </label>
+      <SaveButton onClick={saveItinerary}>Save Itinerary</SaveButton>
 
       <SelectionsContainer>
         <h3>Your Itinerary Selections</h3>

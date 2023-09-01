@@ -40,10 +40,11 @@ const dbFunction = async (VTP) => {
 
 // Routes
 app.use(require("./Routes/authentification"));
-app.use(require("./Routes/routes"));
+app.use(require("./Routes/getitinerary"));
 app.use(require("./Routes/weather"));
 app.use(require("./Routes/restaurants"));
 app.use(require("./Routes/events"));
+app.use(require("./Routes/saveItinerary"));
 
 // Global error handling middleware
 app.use((err, req, res, next) => {

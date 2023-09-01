@@ -5,6 +5,7 @@ const User = require("../models/userModel");
 const { json } = require("body-parser");
 const { MongoClient } = require("mongodb");
 const { MONGO_URI } = process.env;
+
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
