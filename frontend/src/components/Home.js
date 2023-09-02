@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import backgroundImage from "../images/travelImage.jpg";
 
 const HomeContainer = styled.div`
   display: flex;
@@ -10,7 +11,14 @@ const HomeContainer = styled.div`
   padding: 2rem;
   text-align: center;
   min-height: 100vh;
-  position: relative; /* Add this line */
+  position: relative;
+  background-image: url(${backgroundImage});
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #333;
+  font-weight: bold;
+  transition: background-color 0.3s;
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
