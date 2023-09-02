@@ -32,16 +32,16 @@ const fetchItineraryFromDataBase = async (user) => {
     const db = client.db("VTP");
     const itineraryCollection = db.collection("Itineraries");
 
-    const userDocument = await itineraryCollection.findOne({ user: user });
+    const itinerary = await itineraryCollection.findOne({ user: user });
     await client.close();
+    console.log("Fetched Itinerary:", itinerary);
 
     const selectedEvents =
-      userDocument && userDocument.selectedEvents
-        ? userDocument.selectedEvents
-        : [];
+      itinerary && itinerary.selectedEvents ? itinerary.selectedEvents : [];
+
     const selectedRestaurants =
-      userDocument && userDocument.selectedRestaurants
-        ? userDocument.selectedRestaurants
+      itinerary && itinerary.selectedRestaurants
+        ? itinerary.selectedRestaurants
         : [];
 
     return {
@@ -56,7 +56,7 @@ const fetchItineraryFromDataBase = async (user) => {
 
 router.get("/getItinerary", authenticateToken, async (req, res) => {
   try {
-    const userId = req.user.id;
+    const userId = req.user;
     const itineraryData = await fetchItineraryFromDataBase(userId);
     return res.status(200).json(itineraryData);
   } catch (error) {

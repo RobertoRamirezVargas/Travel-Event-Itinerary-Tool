@@ -10,19 +10,29 @@ const HomeContainer = styled.div`
   padding: 2rem;
   text-align: center;
   min-height: 100vh;
+  position: relative; /* Add this line */
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
+    gap: 1rem;
   }
 `;
 
 const Title = styled.h1`
   font-size: 2.5rem;
   color: #333;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+`;
+
+const Subtitle = styled.h2`
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 2rem;
 `;
 
 const StyledLink = styled(Link)`
-  margin: 1rem;
   padding: 0.5rem 1rem;
   background-color: #007bff;
   color: #fff;
@@ -30,6 +40,8 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   font-weight: bold;
   transition: background-color 0.2s;
+  margin: 0.5rem;
+  font-size: 1rem;
 
   &:hover {
     background-color: #0056b3;
@@ -40,6 +52,7 @@ const Home = () => {
   return (
     <HomeContainer>
       <Title>Welcome to Virtual Travel Planner</Title>
+      <Subtitle>To continue Please register or Login</Subtitle>
       <StyledLink to="/registration">Sign up</StyledLink>
       <StyledLink to="/login">Login</StyledLink>
       <StyledLink to="/Profile">Profile</StyledLink>

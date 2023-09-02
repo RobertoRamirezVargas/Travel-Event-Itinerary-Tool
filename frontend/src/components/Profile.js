@@ -26,11 +26,13 @@ const ProfileContent = styled.div`
 const ProfileHeader = styled.h2`
   font-size: 28px;
   margin-bottom: 20px;
+  color: #007bff;
 `;
 
 const ProfileInfo = styled.p`
   font-size: 18px;
   margin: 12px 0;
+  color: #333;
 `;
 
 const ItineraryList = styled.ul`
@@ -53,6 +55,36 @@ const LogoutButton = styled.button`
   border-radius: 6px;
   padding: 12px 24px;
   cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+  &:hover {
+    background-color: #0056b3;
+  }
+`;
+const SectionHeader = styled.h3`
+  font-size: 24px;
+  margin: 20px 0;
+`;
+
+const ListItem = styled.li`
+  margin: 16px 0;
+  padding: 16px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+  &:hover {
+    background-color: #dcdcdc;
+  }
+`;
+
+const ItemTitle = styled.h4`
+  font-size: 18px;
+  margin-bottom: 8px;
+`;
+
+const ItemDescription = styled.p`
   font-size: 16px;
 `;
 
@@ -82,6 +114,7 @@ const Profile = ({ user, setUser }) => {
   }, []);
 
   if (!user) {
+    navigate("/login");
     return <p>Loading User Data...</p>;
   }
 
@@ -100,31 +133,39 @@ const Profile = ({ user, setUser }) => {
 
         {itinerary.length > 0 && (
           <div>
-            <h3>Your Saved Events:</h3>
+            <SectionHeader>Your Saved Events:</SectionHeader>
             <ul>
               {itinerary.map((event, index) => (
-                <li key={index}>
-                  <h4>{event.name}</h4>
-                  <p>Type: {event.type}</p>
+                <ListItem key={index}>
+                  <ItemTitle>{event.name}</ItemTitle>
+                  <ItemDescription>Type: {event.type}</ItemDescription>
                   <a href={event.url} target="_blank" rel="noopener noreferrer">
                     Event Details
                   </a>
-                </li>
+                </ListItem>
               ))}
             </ul>
           </div>
         )}
 
-        {selectedRestaurants.length > 0 && ( // Add this section
+        {selectedRestaurants.length > 0 && (
           <div>
-            <h3>Your Selected Restaurants:</h3>
+            <SectionHeader>Your Selected Restaurants:</SectionHeader>
             <ul>
               {selectedRestaurants.map((restaurant, index) => (
-                <li key={index}>
-                  <h4>{restaurant.name}</h4>
-                  <p>Cuisine: {restaurant.cuisine}</p>
-                  {/* Add additional restaurant details here */}
-                </li>
+                <ListItem key={index}>
+                  <ItemTitle>{restaurant.name}</ItemTitle>
+                  <ItemDescription>
+                    Cuisine: {restaurant.cuisine}
+                  </ItemDescription>
+                  <a
+                    href={restaurant.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Restaurant Details
+                  </a>
+                </ListItem>
               ))}
             </ul>
           </div>

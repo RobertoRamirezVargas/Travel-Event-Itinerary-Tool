@@ -13,22 +13,30 @@ import {
 const WeatherContainer = styled.div`
   text-align: center;
   padding: 2rem;
+  background-color: #f5f5f5;
+  border-radius: 12px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
 `;
 
 const LocationInput = styled.input`
-  padding: 0.5rem;
+  padding: 0.3rem 0.5rem;
   border: 1px solid #ddd;
   border-radius: 4px;
-  width: 100%;
+  width: 60%;
   margin-bottom: 1rem;
 `;
 
 const WeatherIcon = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 3rem;
+  color: #007bff;
+  height: 4rem;
 `;
 
 const WeatherDescription = styled.p`
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: #555;
 `;
 
