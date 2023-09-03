@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import backgroundImage from "../images/travelImage.jpg";
 
 const HomeContainer = styled.div`
   display: flex;
@@ -12,10 +11,7 @@ const HomeContainer = styled.div`
   text-align: center;
   min-height: 100vh;
   position: relative;
-  background-image: url(${backgroundImage});
-  background-size: cover;
-  background-position: center;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 555, 0.8);
   color: #333;
   font-weight: bold;
   transition: background-color 0.3s;
@@ -60,7 +56,7 @@ const Home = () => {
   return (
     <HomeContainer>
       <Title>Welcome to Virtual Travel Planner</Title>
-      <Subtitle>To continue Please register or Login</Subtitle>
+      <Subtitle>To continue, please register or login</Subtitle>
       <StyledLink to="/registration">Sign up</StyledLink>
       <StyledLink to="/login">Login</StyledLink>
       <StyledLink to="/Profile">Profile</StyledLink>

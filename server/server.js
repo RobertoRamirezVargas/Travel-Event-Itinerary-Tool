@@ -45,6 +45,7 @@ app.use(require("./Routes/weather"));
 app.use(require("./Routes/restaurants"));
 app.use(require("./Routes/events"));
 app.use(require("./Routes/saveItinerary"));
+app.use(require("./Routes/maps"));
 
 // Global error handling middleware
 app.use((err, req, res, next) => {
