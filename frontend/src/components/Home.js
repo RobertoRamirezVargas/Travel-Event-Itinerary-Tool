@@ -59,11 +59,6 @@ const Home = () => {
       <Subtitle>To continue, please register or login</Subtitle>
       <StyledLink to="/registration">Sign up</StyledLink>
       <StyledLink to="/login">Login</StyledLink>
-      <StyledLink to="/Profile">Profile</StyledLink>
-      <StyledLink to="/itinerary">Create Itinerary</StyledLink>
-      <StyledLink to="/map">View Map</StyledLink>
-      <StyledLink to="/weather">Check Weather</StyledLink>
-      <StyledLink to="/events">Local Events</StyledLink>
     </HomeContainer>
   );
 };
